@@ -18,7 +18,7 @@ Encoding_list_for_storing = []
 for (i, imagePath) in enumerate(imagePaths):
     print("[INFO] processing image {}/{}".format(i+1, len(imagePaths)))
     name = imagePath.split(os.path.sep)[-2]
-    print(name)
+    
     
     image = cv2.imread(imagePath)
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -29,6 +29,7 @@ for (i, imagePath) in enumerate(imagePaths):
     for encoding in encodings:
         encoding = encoding.tolist()
         name = name.replace("Data/Trained/","")
+        print(name)
         encoding.append(name)
         Encoding_list_for_storing.append(encoding)
 
