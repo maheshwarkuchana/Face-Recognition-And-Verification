@@ -1,8 +1,8 @@
 import face_recognition
 import cv2
 import glob
-
-images = glob.glob("Data/Untrained/Abhilash_A/*.jpg")
+# Data/Trained/Shashank_Boorla/*.jpg
+images = glob.glob("Data/Trained/Photos/*.jpg")
 i = 0
 for imagePath in images:
     image = cv2.imread(imagePath)
@@ -14,6 +14,6 @@ for imagePath in images:
     
     for (top, right, bottom, left) in boxes:
         img = image[top:bottom,left:right]
-        cv2.imwrite('Data/Untrained/1/'+str(i)+'.jpg', img)
+        cv2.imwrite('Data/Trained/Temp/'+str(i)+'.jpg', img)
         print(i)
         i +=1
