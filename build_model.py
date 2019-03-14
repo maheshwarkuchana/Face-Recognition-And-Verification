@@ -1,5 +1,6 @@
 import pandas as pd
 import pickle
+import numpy as np
 
 df = pd.read_csv("Excel_Data\\encode.csv")
 
@@ -36,20 +37,6 @@ clf.fit(X,Y)
 # from sklearn.ensemble import AdaBoostClassifier
 # clf = AdaBoostClassifier()
 # clf.fit(X,Y)
-
-# from keras.models import Sequential
-# from keras.layers import Dense
-# from keras.utils import np_utils
-
-# clf = Sequential()
-# clf.add(Dense(units=100, input_dim=128, activation='relu'))
-# clf.add(Dense(units=75, activation='relu'))
-# clf.add(Dense(units=50, activation='relu'))
-# clf.add(Dense(units=10, activation='softmax'))
-
-
-# clf.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-# clf.fit(X, Y, epochs=40, batch_size=10)
 
 filename = "Models\\MLP_Classifier_Model.pickle"
 pickle.dump(clf, open(filename, 'wb'))
