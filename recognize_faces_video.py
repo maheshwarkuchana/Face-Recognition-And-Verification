@@ -15,7 +15,6 @@ args = vars(ap.parse_args())
 
 print("Starting Video")
 vs = VideoStream(src=0).start()
-writer = None
 time.sleep(2.0)
 
 while True:
@@ -57,6 +56,3 @@ while True:
 
 cv2.destroyAllWindows()
 vs.stop()
-
-if writer is not None:
-    	writer.release()
