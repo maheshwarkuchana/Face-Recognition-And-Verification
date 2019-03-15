@@ -38,3 +38,6 @@ class Adding_new_dataset:
                 Encodings_list.append(encoding)
 
         Encodings_to_CSV.main(Encodings_list)
+
+
+Adding_new_dataset.main()
