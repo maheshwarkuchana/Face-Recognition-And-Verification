@@ -4,7 +4,7 @@ import pickle
 import pandas as pd
 import predict_faces
 
-image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\6.jpg")
+image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\3.jpg")
 
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -26,5 +26,5 @@ for ((top, right, bottom, left), name) in zip(boxes, names):
 
 image = cv2.resize(image, (0, 0), fx=0.2, fy=0.2)
 cv2.imshow("Image", image)
-cv2.waitKey(0)
+cv2.waitKey()
 cv2.destroyAllWindows()
