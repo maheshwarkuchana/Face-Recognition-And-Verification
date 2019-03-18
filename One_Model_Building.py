@@ -15,7 +15,6 @@ le_name_mapping = dict(zip(le.transform(le.classes_), le.classes_))
 
 for key in le_name_mapping.keys():
     one_class_dataframe = X.loc[X['name'] == le_name_mapping[key]]
-    print(one_class_dataframe.iloc[:,-1], le_name_mapping[key])
     X_train = one_class_dataframe.iloc[:,:-1]
 
     clf = IsolationForest(behaviour='new', max_samples=100, contamination='auto')
