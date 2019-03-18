@@ -12,9 +12,9 @@ for imagePath in images:
     boxes = face_recognition.face_locations(rgb, model='hog')
     encodings = face_recognition.face_encodings(rgb, boxes)
 
-    
+        
     for (top, right, bottom, left) in boxes:
         img = image[top:bottom,left:right]
-        cv2.imwrite('Data/Trained/Temp/'+str(i)+'.jpg', img)
+        cv2.imwrite('Data/Untrained/Temp/'+str(i)+'.jpg', img)
         print(i)
         i +=1

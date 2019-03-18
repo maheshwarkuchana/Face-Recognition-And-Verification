@@ -1,5 +1,6 @@
 import pandas as pd
 import pickle
+# from Build_model import Build_Model
 
 
 class Encodings_to_CSV:
@@ -24,3 +25,4 @@ class Encodings_to_CSV:
         print(Encodings_to_CSV.df.shape)
         print('Added Encoding')
         Encodings_to_CSV.Update_Pickle()
+        # Build_Model.__init__()

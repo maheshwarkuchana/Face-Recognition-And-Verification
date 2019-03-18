@@ -35,8 +35,7 @@ class Adding_new_dataset:
                 encoding = encoding.tolist()
                 name = name.replace("Data/Trained/", "")
                 name = name.replace("1", "")
-                print(name)
-
+                # print(name)
                 encoding.append(name)
                 Encodings_list.append(encoding)
 
