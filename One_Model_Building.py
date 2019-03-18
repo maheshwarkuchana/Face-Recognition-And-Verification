@@ -11,18 +11,17 @@ Y = df.iloc[:, -1]
 le = LabelEncoder()
 le.fit(Y)
 Y = le.transform(Y)
-le_name_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
-le_name_mapping = dict((v, k) for k, v in le_name_mapping.items())
+le_name_mapping = dict(zip(le.transform(le.classes_), le.classes_))
 
 for key in le_name_mapping.keys():
     one_class_dataframe = X.loc[X['name'] == le_name_mapping[key]]
     print(one_class_dataframe.iloc[:,-1], le_name_mapping[key])
     X_train = one_class_dataframe.iloc[:,:-1]
 
-    # clf = IsolationForest(behaviour='new', max_samples=100, contamination='auto')
+    clf = IsolationForest(behaviour='new', max_samples=100, contamination='auto')
 
-    # clf.fit(X_train)
+    clf.fit(X_train)
 
-    # filename = "Models\\One_Class_Models\\"+str(le_name_mapping[key])+"_Model.pickle"
-    # pickle.dump(clf, open(filename, 'wb'))
-    # print("Dumped "+str(le_name_mapping[key])+" Model")
+    filename = "Models\\One_Class_Models\\"+str(le_name_mapping[key])+"_Model.pickle"
+    pickle.dump(clf, open(filename, 'wb'))
+    print("Dumped "+str(le_name_mapping[key])+" Model")
