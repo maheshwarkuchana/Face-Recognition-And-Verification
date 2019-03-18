@@ -1,43 +1,35 @@
+from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 import pickle
 import numpy as np
 
-df = pd.read_csv("Excel_Data\\encode.csv")
 
-X = df.iloc[:,1:-1]
-Y = df.iloc[:,-1]
+class Build_Model:
 
-from sklearn.preprocessing import LabelEncoder
+    df = pd.read_csv("Excel_Data\\encode.csv")
+    le_name_mapping = dict()
 
-le = LabelEncoder()
-Y = le.fit_transform(Y)
+    def __init__(self, df):
+        Build_Model.df = df
+        X = df.iloc[:, 1:-1]
+        Y = df.iloc[:, -1]
+        Build_Model.Label_Encoding(X, Y)
 
-le_name_mapping = dict(zip(le.transform(le.classes_), le.classes_))
-print(le_name_mapping)
-filename = "Models\\Names_Class_Mapping.pickle"
-pickle.dump(le_name_mapping, open(filename, 'wb'))
+    def label_encoding(X, Y):
+        le = LabelEncoder()
+        Y = le.fit_transform(Y)
+        Build_Model.le_name_mapping = dict(
+            zip(le.transform(le.classes_), le.classes_))
+        Build_Model.training_model(X, Y)
 
-# from sklearn.ensemble import RandomForestClassifier
-# clf = RandomForestClassifier()
-# clf.fit(X,Y)
+    def saving_model(clf):
+        filename = "Models\\Names_Class_Mapping.pickle"
+        pickle.dump(Build_Model.le_name_mapping, open(filename, 'wb'))
+        filename = "Models\\MLP_Classifier_Model.pickle"
+        pickle.dump(clf, open(filename, 'wb'))
 
-from sklearn.neural_network import MLPClassifier
-clf = MLPClassifier()
-clf.fit(X,Y)
-
-# from sklearn.svm import SVC
-# clf = SVC(kernel='linear')
-# clf.fit(X,Y)
-
-# from sklearn.svm import SVC
-# clf = SVC(kernel='rbf')
-# clf.fit(X,Y)
-
-# from sklearn.ensemble import AdaBoostClassifier
-# clf = AdaBoostClassifier()
-# clf.fit(X,Y)
-
-filename = "Models\\MLP_Classifier_Model.pickle"
-pickle.dump(clf, open(filename, 'wb'))
-
-
+    def training_model(X, Y):
+        clf = MLPClassifier()
+        clf.fit(X, Y)
+        Build_Model.saving_model(clf)
