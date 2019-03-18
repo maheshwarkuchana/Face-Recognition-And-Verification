@@ -1,7 +1,8 @@
 import face_recognition
 import cv2
 import glob
-# Data/Trained/Shashank_Boorla/*.jpg
+
+
 images = glob.glob("C:/Users/Anonymous/Downloads/1/*.jpg")
 i = 0
 for imagePath in images:
