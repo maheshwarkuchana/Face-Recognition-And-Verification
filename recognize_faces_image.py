@@ -4,7 +4,7 @@ import pickle
 import pandas as pd
 import predict_faces
 
-image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\3.jpg")
+image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\9.jpg")
 
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

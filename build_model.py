@@ -10,10 +10,9 @@ Y = df.iloc[:,-1]
 from sklearn.preprocessing import LabelEncoder
 
 le = LabelEncoder()
-le.fit(Y)
-Y = le.transform(Y)
-le_name_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
-le_name_mapping = dict((v,k) for k,v in le_name_mapping.items())
+Y = le.fit_transform(Y)
+
+le_name_mapping = dict(zip(le.transform(le.classes_), le.classes_))
 print(le_name_mapping)
 filename = "Models\\Names_Class_Mapping.pickle"
 pickle.dump(le_name_mapping, open(filename, 'wb'))
