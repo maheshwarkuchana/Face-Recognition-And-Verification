@@ -3,7 +3,7 @@ import cv2
 import glob
 
 
-images = glob.glob("C:/Users/Anonymous/Downloads/1/*.jpg")
+images = glob.glob("Data\\Untrained\\Maheshwar\\*.jpg")
 i = 0
 for imagePath in images:
     image = cv2.imread(imagePath)

@@ -1,5 +1,6 @@
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
+from sklearn.svm import SVC_Linear_Model
 import pandas as pd
 import pickle
 import numpy as np
@@ -31,7 +32,7 @@ class Build_Model:
         pickle.dump(clf, open(filename, 'wb'))
 
     def training_model(X, Y):
-        clf = MLPClassifier()
+        clf = SVC_Linear_Model()
         clf.fit(X, Y)
         Build_Model.saving_model(clf)
 

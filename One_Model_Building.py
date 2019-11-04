@@ -1,4 +1,5 @@
 from sklearn.ensemble import IsolationForest
+from sklearn.svm import OneClassSVM
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 import pickle
@@ -18,6 +19,7 @@ for key in le_name_mapping.keys():
     X_train = one_class_dataframe.iloc[:,:-1]
 
     clf = IsolationForest(behaviour='new', max_samples=100, contamination='auto')
+    # clf = OneClassSVM()
 
     clf.fit(X_train)
 

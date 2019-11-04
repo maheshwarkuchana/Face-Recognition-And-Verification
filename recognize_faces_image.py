@@ -4,8 +4,8 @@ import pickle
 import pandas as pd
 import predict_faces
 
-image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\3.jpg")
-
+image = cv2.imread("C:\\Users\\Anonymous\\Documents\\GitHub\\Face-Recognition-Neural-Networks\\Test_Images\\six.jpg")
+image = cv2.resize(image, (5000,5000))
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 boxes = face_recognition.face_locations(rgb, model='hog')
@@ -21,8 +21,8 @@ for encoding in encodings:
 for ((top, right, bottom, left), name) in zip(boxes, names):
     cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
     y = top-15 if top - 15 > 15 else top+15
-    cv2.putText(image, name, (left, y),
-                cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
+    # cv2.putText(image, name, (left, y),
+    #             cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
 
 image = cv2.resize(image, (0, 0), fx=0.2, fy=0.2)
 cv2.imshow("Image", image)

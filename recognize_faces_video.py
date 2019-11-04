@@ -14,12 +14,11 @@ ap.add_argument("-y", "--display", type=int, default=1,
 args = vars(ap.parse_args())
 
 print("Starting Video")
-vs = VideoStream(src=0).start()
-time.sleep(2.0)
+vs = cv2.VideoCapture(0)
 
 while True:
-    frame = vs.read()
-    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    ret, frame = vs.read()
+    # rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     # Reducing the size of frame for fast computing
     rgb = imutils.resize(frame, width=750)
     r = frame.shape[1] / float(rgb.shape[1])
@@ -34,17 +33,17 @@ while True:
         name = predict_faces.main(encoding)
         names.append(name)
 
-    for ((top, right, bottom, left), name) in zip(boxes, names):
-        top = int(top * r)
-        right = int(right * r)
-        bottom = int(bottom * r)
-        left = int(left * r)
+    # for ((top, right, bottom, left), name) in zip(boxes, names):
+    #     top = int(top * r)
+    #     right = int(right * r)
+    #     bottom = int(bottom * r)
+    #     left = int(left * r)
 
-        cv2.rectangle(frame, (left, top), (right, bottom),
-                    (255, 0, 0), 2)
-        y = top - 15 if top - 15 > 15 else top + 15
-        cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.75, (0, 255, 0), 2)
+    #     cv2.rectangle(frame, (left, top), (right, bottom),
+    #                 (255, 0, 0), 2)
+    #     y = top - 15 if top - 15 > 15 else top + 15
+    #     cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
+    #                 0.75, (0, 255, 0), 2)
 
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1) & 0xFF
