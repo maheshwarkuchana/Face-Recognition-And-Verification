@@ -11,5 +11,6 @@ name_mapping = pickle.load(file)
 def main(query):
     pred = clf.predict(query)
     print(pred)
+    print(pred)
     return Verification_module.main(query, pred)
     
